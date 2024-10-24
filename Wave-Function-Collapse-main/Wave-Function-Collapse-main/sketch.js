@@ -11,8 +11,8 @@ function preload() {
   //   tileImages[i] = loadImage(`${path}/tile${i}.png`);
   // }
 
-  const path = 'tiles/circuit-coding-train';
-  for (let i = 0; i < 13; i++) {
+  const path = 'tiles/pipes';
+  for (let i = 0; i < 5; i++) {
     tileImages[i] = loadImage(`${path}/${i}.png`);
   }
 }
@@ -38,22 +38,74 @@ function setup() {
   // tiles[5] = new Tile(tileImages[5], ['ABA', 'AAA', 'ABA', 'AAA']);
   // tiles[6] = new Tile(tileImages[6], ['ABA', 'ABA', 'ABA', 'ABA']);
 
-  // Loaded and created the tiles
-  tiles[0] = new Tile(tileImages[0], ['AAA', 'AAA', 'AAA', 'AAA']);
-  tiles[1] = new Tile(tileImages[1], ['BBB', 'BBB', 'BBB', 'BBB']);
-  tiles[2] = new Tile(tileImages[2], ['BBB', 'BCB', 'BBB', 'BBB']);
-  tiles[3] = new Tile(tileImages[3], ['BBB', 'BDB', 'BBB', 'BDB']);
-  tiles[4] = new Tile(tileImages[4], ['ABB', 'BCB', 'BBA', 'AAA']);
-  tiles[5] = new Tile(tileImages[5], ['ABB', 'BBB', 'BBB', 'BBA']);
+  // Loaded and created the tiles     Top    Right  Bottom  Left
+  tiles[0] = new Tile(tileImages[0], ['AAB', 'LLL', 'BAA', 'LLL']);
+  tiles[1] = new Tile(tileImages[1], ['AAB', 'ACA', 'CAA', 'ACA']);
+  tiles[2] = new Tile(tileImages[2], ['AAC', 'LLL', 'CAA', 'ACA']);
+  tiles[3] = new Tile(tileImages[3], ['AAC', 'ACA', 'CAA', 'LLL']);
+  tiles[4] = new Tile(tileImages[4], ['AAC', 'ACA', 'BAA', 'ACA']);
+                                      // AAA - Can't connect to anything
+                                      //
+
+  // Tile 0 top connects with Tile 4 bottom
+  // - AAB connects with BAA
+  // Tile 0 right connects with Tile 3 left
+  // - LLL connects with 
+  // Tile 0 bottom connects to Tile 1 top
+  // - AAB connects with BAA
+  // Tile 0 left connects with Tile 2 right
+  // - LLL connects with LLL
+
+  // Tile 1 top connects with Tile 0, Tile 4 from their bottom
+  // - BAA connects with AAB and AAB
+  // Tile 1 right connects with Tile 2, Tile 4 from their left
+  // - ACA connects with ACA and ACA
+  // Tile 1 bottom connects with Tile 2, Tile 3, Tile 4 from their top
+  // - CAA connects with AAC, AAC, and AAC
+  // Tile 1 left connects with Tile 3, Tile 4 from their right
+  // - ACA connects with ACA and ACA
+
+  // Tile 2 top connects with Tile 1, Tile 3 from their bottom
+  // - AAC connects with CAA and CAA
+  // Tile 2 right connects with Tile 0, Tile 3 from their left
+  // - LLL connects LLL and LLL
+  // Tile 2 bottom connects with Tile 3, Tile 4 from their top
+  // - CAA connects AAC and AAC
+  // Tile 2 left connects with Tile 1, Tile 3, Tile 4 from their right
+  // - ACA connects with ACA, ACA, and ACA
+
+  // Tile 3 top connects with Tile 1, Tile 2 from their bottom
+  // - AAC connects with CAA and CAA
+  // Tile 3 right connects with Tile 1, Tile 2, Tile 4 from their left
+  // - ACA connects with ACA, ACA, and ACA
+  // Tile 3 bottom conencts with Tile 2, Tile 4 from their top
+  // - CAA conects with AAC and AAC
+  // Tile 3 left connects with Tile 0, Tile 2 from their right
+  // - LLL connects with LLL and LLL
+  
+  // Tile 4 top connects with Tile 1, Tile 2, Tile 3 from their bottom
+  // - AAC connects with CAA, CAA, and CAA
+  // Tile 4 right connects with Tile 1, Tile 2, from their left
+  // - ACA connects with ACA and ACA
+  // Tile 4 bottom connects with Tile 0, Tile 1 from their top
+  // - BAA connects with AAB and AAB
+  // Tile 4 left connects with Tile 1, Tile 3 from their right
+  // - ACA connects with ACA and ACA
+
+  // Right connects with Left
+  // Top connects with Down
+  
+  
+  /*tiles[5] = new Tile(tileImages[5], ['ABB', 'BBB', 'BBB', 'BBA']);
   tiles[6] = new Tile(tileImages[6], ['BBB', 'BCB', 'BBB', 'BCB']);
   tiles[7] = new Tile(tileImages[7], ['BDB', 'BCB', 'BDB', 'BCB']);
   tiles[8] = new Tile(tileImages[8], ['BDB', 'BBB', 'BCB', 'BBB']);
   tiles[9] = new Tile(tileImages[9], ['BCB', 'BCB', 'BBB', 'BCB']);
   tiles[10] = new Tile(tileImages[10], ['BCB', 'BCB', 'BCB', 'BCB']);
   tiles[11] = new Tile(tileImages[11], ['BCB', 'BCB', 'BBB', 'BBB']);
-  tiles[12] = new Tile(tileImages[12], ['BBB', 'BCB', 'BBB', 'BCB']);
+  tiles[12] = new Tile(tileImages[12], ['BBB', 'BCB', 'BBB', 'BCB']);*/
 
-  for (let i = 0; i < 12; i++) {
+  for (let i = 0; i < 5; i++) {
     tiles[i].index = i;
   }
 
